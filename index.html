@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Taival Tech &#8212; Hardware Engineering Consulting</title>
-  <meta name="description" content="Senior hardware engineering consulting. BLDC/PMSM drives, power electronics, DFM, NPI. Independent. No overhead." />
+  <meta name="description" content="Senior hardware engineering consulting. Mechanical design, DFM, NPI, full-cycle product development. Independent. No overhead." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -59,6 +59,13 @@
     .background-inner p { font-size: 17px; line-height: 1.75; color: #333; margin-bottom: 20px; }
     .background-inner p:last-child { margin-bottom: 0; }
     .background-inner b { font-weight: 500; color: var(--black); }
+    .about { padding: 120px 0; background: var(--bg); border-top: 1px solid var(--border); }
+    .about-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 300px; gap: 64px; align-items: start; }
+    .about-text p { font-size: 17px; line-height: 1.75; color: #333; margin-bottom: 20px; }
+    .about-text p:last-child { margin-bottom: 0; }
+    .about-text b { font-weight: 500; color: var(--black); }
+    .about-photo img { width: 100%; border-radius: 6px; display: block; }
+    @media (max-width: 800px) { .about-inner { grid-template-columns: 1fr; } .about-photo { order: -1; max-width: 260px; } }
     .cta-section { padding: 160px 32px; background: var(--bg-dark); text-align: center; }
     .cta-section p { font-size: 22px; line-height: 1.55; color: rgba(255,255,255,0.8); max-width: 500px; margin: 0 auto 40px; }
     .btn-light { display: inline-block; font-size: 15px; font-weight: 500; color: var(--white); background: var(--green); padding: 13px 28px; border-radius: 4px; text-decoration: none; transition: opacity 0.15s; }
@@ -107,7 +114,7 @@
         <span class="label">The problem</span>
         <p>Hardware startups don&#8217;t run out of ideas. They run out of senior engineering time at the worst possible moments &#8212; design reviews, supplier negotiations, the week before a pilot production run.</p>
         <p>Large consultancies are slow to engage and expensive to keep. When they do show up, the senior engineer presents the pitch. A junior does the work.</p>
-        <p>Freelancers are faster, but deep electromechanical experience is rare. Most have breadth. Few have built a drive system, debugged a power electronics failure at a contract manufacturer, and survived a first production run.</p>
+        <p>Freelancers are faster, but deep mechanical and system-level experience is rare. Most have breadth. Few have designed a drive unit from scratch, resolved a DFM failure at a contract manufacturer, and survived a first production run.</p>
         <p>That&#8217;s the gap. Not engineering in general &#8212; senior judgment, available when it counts.</p>
       </div>
     </div>
@@ -161,7 +168,7 @@
         </div>
         <div class="why-block">
           <strong>Depth where it&#8217;s hardest to find.</strong>
-          <p>Mechanical design, BLDC/PMSM drives, power electronics, electromechanical integration, DFM, prototyping, and testing for low-to-mid volume production. Not a generalist. Not a &#8220;hardware consultant.&#8221; Someone who has built these systems.</p>
+          <p>Mechanical design, full-cycle product development, DFM, NPI, supplier coordination, and production ramp for low-to-mid volume hardware. Not a generalist. Not a &#8220;hardware consultant.&#8221; Someone who has built these systems.</p>
         </div>
         <div class="why-block">
           <strong>Startup pace, not firm pace.</strong>
@@ -177,8 +184,25 @@
       <div class="background-inner">
         <span class="label">Background</span>
         <p>This is not a firm. It&#8217;s one engineer with a specific kind of background &#8212; building real products, under real constraints, at companies where a wrong call had consequences.</p>
-        <p>At <b>Revonte</b>, as co-founder: designing the drive unit system for a novel e-bike from scratch &#8212; BLDC motor integration, power electronics, mechanical packaging, all the way to manufacturable hardware. At <b>Simucube</b>: high-performance sim racing hardware where precision and reliability aren&#8217;t differentiators &#8212; they&#8217;re the baseline. At <b>Verge Motorcycles</b>: electric superbike engineering where margins for error are narrow and deadlines are real.</p>
+        <p>At <b>Revonte</b>, as co-founder: designing the drive unit system for a novel e-bike from scratch &#8212; mechanical architecture, gearing, injection-moulded and die cast components, all the way to a production line running 15&#8239;000 units a year. At <b>Simucube</b>: high-performance sim racing hardware where precision and reliability aren&#8217;t differentiators &#8212; they&#8217;re the baseline. At <b>Verge Motorcycles</b>: electric superbike engineering where margins for error are narrow and deadlines are real.</p>
         <p>That experience is the product. Not a methodology, not a framework &#8212; direct familiarity with what breaks, what matters at each stage, and where the risks live before they become problems.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-text">
+        <span class="label">About</span>
+        <p><b>Iiro Peltola</b> is a mechanical engineer at heart who has spent his career in startup environments where the product either ships or it doesn&#8217;t.</p>
+        <p>At <b>Revonte</b>, he co-founded the company and led the drive unit from a blank CAD file to a functioning production line. Gears, shafts, injection-moulded housings, die cast parts &#8212; all of it, end to end. At <b>Simucube</b>, he works as Lead Engineer on new products where tolerances are tight and the customers notice everything. At <b>Verge Motorcycles</b>, he contributes to an electric superbike where the engineering margin for error is essentially zero.</p>
+        <p>He doesn&#8217;t claim to be everything. The background is mechanical design, system engineering, DFM, NPI, supplier work, and full-cycle product development. That&#8217;s what Taival Tech offers.</p>
+        </div>
+        <div class="about-photo">
+          <img src="iiro.jpg" alt="Iiro Peltola" />
+        </div>
       </div>
     </div>
   </section>
