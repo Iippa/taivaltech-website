@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -16,6 +16,7 @@
 <body>
   <nav class="site-nav" id="site-nav">
     <div class="nav-inner">
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
       <a class="nav-logo" href="/">Taival Tech</a>
       <ul class="nav-links">
         <li><a href="#story" id="nav-story">Story</a></li>
@@ -26,6 +27,15 @@
       </ul>
       <a class="nav-cta" href="#contact">Get in touch</a>
     </div>
+  </nav>
+  <nav class="nav-drawer" id="nav-drawer" aria-hidden="true">
+    <ul class="nav-drawer-links">
+      <li><a href="index.html#story">Story</a></li>
+      <li><a href="portfolio/">Portfolio</a></li>
+      <li><a href="services/">Services</a></li>
+      <li><a href="blog/">Blog</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
   </nav>
 
   <header class="hero">
