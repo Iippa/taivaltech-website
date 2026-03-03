@@ -1,0 +1,15 @@
+{
+  "slug": "automating-odoo-purchasing-for-hardware-teams",
+  "title": "We Automated Purchasing in Odoo So Engineering Time Stays in Engineering",
+  "excerpt": "I automated purchasing admin in Odoo by connecting CAD data to part numbers, BOMs, RFQ/PO drafts, and follow-ups—so engineering time stays on engineering.",
+  "date": "2026-03-03",
+  "author": "Iiro Peltola",
+  "tags": [
+    "odoo",
+    "erp",
+    "hardware-engineering",
+    "procurement-automation",
+    "ai-automation",
+    "bom"
+  ]
+}

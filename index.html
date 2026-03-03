@@ -3,505 +3,221 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Taival Tech &#8212; Hardware Engineering Consulting</title>
-  <meta name="description" content="Senior hardware engineering consulting. Mechanical design, DFM, NPI, full-cycle product development. Independent. No overhead." />
+  <title>Taival Tech — Hardware Engineering Consulting</title>
+  <meta name="description" content="Iiro Peltola, senior hardware engineer. Mechanical design, prototyping, NPI, and first production support for teams shipping real hardware." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/site.css" />
   <!-- Umami Analytics -->
   <script defer src="https://cloud.umami.is/script.js" data-website-id="70021f70-13da-4fe8-9bda-048209e705a2"></script>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --bg-dark: #0a0a0a;
-      --bg-light: #ffffff;
-      --bg-warm: #f6f5f1;
-      --text-light: #f5f0e8;
-      --text-muted-light: rgba(255,255,255,0.55);
-      --text-dark: #0a0a0a;
-      --text-muted-dark: #555555;
-      --accent: #8a9aa8;
-      --max: 1140px;
-    }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      font-size: 18px;
-      line-height: 1.7;
-      color: var(--text-dark);
-      background: var(--bg-light);
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* TYPOGRAPHY */
-    h1, h2, h3 { font-weight: 300; letter-spacing: -0.03em; }
-
-    /* NAV */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      background: transparent;
-      border-bottom: 1px solid transparent;
-      transition: background 0.3s, border-color 0.3s;
-    }
-    nav.scrolled {
-      background: rgba(10,10,10,0.96);
-      border-bottom-color: rgba(255,255,255,0.08);
-    }
-    .nav-inner {
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 0 40px;
-      height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .nav-logo {
-      font-size: 15px;
-      font-weight: 500;
-      letter-spacing: -0.01em;
-      color: #fff;
-      text-decoration: none;
-    }
-    .nav-cta {
-      font-size: 14px;
-      font-weight: 500;
-      color: #fff;
-      background: transparent;
-      border: 1px solid rgba(255,255,255,0.3);
-      padding: 8px 20px;
-      border-radius: 0;
-      text-decoration: none;
-      transition: background 0.2s, color 0.2s;
-    }
-    .nav-cta:hover { background: #fff; color: var(--bg-dark); }
-
-    /* CONTAINER */
-    .container { max-width: var(--max); margin: 0 auto; padding: 0 40px; }
-
-    /* LABELS */
-    .label {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 28px;
-      display: block;
-    }
-
-    /* HERO */
-    .hero {
-      position: relative;
-      height: 100vh;
-      min-height: 600px;
-      background: var(--bg-dark);
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-    }
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background: url('2026-03-03-hero-motor.png') center / cover no-repeat;
-      animation: kenBurns 25s infinite alternate ease;
-    }
-    @keyframes kenBurns {
-      0% { transform: scale(1.0); }
-      100% { transform: scale(1.08); }
-    }
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.7);
-    }
-    .hero-content { position: relative; z-index: 2; }
-    .hero h1 {
-      font-size: clamp(52px, 7vw, 88px);
-      line-height: 1.08;
-      color: var(--text-light);
-      margin-bottom: 28px;
-    }
-    .hero p {
-      font-size: 19px;
-      line-height: 1.6;
-      color: rgba(255,255,255,0.65);
-      max-width: 560px;
-      margin-bottom: 40px;
-    }
-    .btn {
-      display: inline-block;
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--bg-dark);
-      background: var(--text-light);
-      padding: 14px 36px;
-      border-radius: 0;
-      text-decoration: none;
-      transition: opacity 0.15s;
-    }
-    .btn:hover { opacity: 0.85; }
-    .hero-tagline {
-      display: block;
-      margin-top: 20px;
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.35);
-    }
-    .scroll-indicator {
-      position: absolute;
-      bottom: 40px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 2;
-    }
-    .scroll-indicator::before {
-      content: '';
-      display: block;
-      width: 1px;
-      height: 48px;
-      background: rgba(255,255,255,0.3);
-      animation: scrollPulse 2.5s infinite ease;
-    }
-    @keyframes scrollPulse {
-      0%, 100% { opacity: 0.15; transform: scaleY(0.5); transform-origin: top; }
-      50% { opacity: 0.5; transform: scaleY(1); transform-origin: top; }
-    }
-
-    /* REVEAL ANIMATIONS */
-    .reveal-child {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.65s ease, transform 0.65s ease;
-    }
-    .reveal-child.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* PROBLEM */
-    .problem { padding: 140px 0; background: var(--bg-light); }
-    .problem-text { max-width: 640px; margin: 0 auto; }
-    .problem-text p { font-size: 18px; line-height: 1.7; color: #333; margin-bottom: 20px; }
-    .problem-text p:last-child { margin-bottom: 0; }
-
-    /* SERVICES */
-    .services {
-      position: relative;
-      overflow: hidden;
-      padding: 140px 0;
-      background: var(--bg-warm);
-    }
-    .services::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: url('2026-03-03-services-tools.png') center / cover no-repeat;
-      opacity: 0.06;
-      filter: grayscale(100%) contrast(1.05);
-      pointer-events: none;
-    }
-    .services .container { position: relative; z-index: 1; }
-    .services-header { margin-bottom: 56px; }
-    .services-header h2 { font-size: clamp(36px, 5vw, 56px); color: var(--text-dark); }
-    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
-    .service-card { border-top: 2px solid var(--text-dark); padding-top: 24px; }
-    .service-tag {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 16px;
-      display: block;
-    }
-    .service-card h3 { font-size: 20px; font-weight: 400; letter-spacing: -0.01em; margin-bottom: 16px; color: var(--text-dark); }
-    .service-card p { font-size: 15px; line-height: 1.65; color: var(--text-muted-dark); }
-
-    /* WHY */
-    .why { padding: 140px 0; background: var(--bg-light); }
-    .why-inner { max-width: 720px; margin: 0 auto; }
-    .why-header { margin-bottom: 56px; }
-    .why-header h2 { font-size: clamp(36px, 5vw, 56px); color: var(--text-dark); }
-    .why-block { margin-bottom: 48px; }
-    .why-block:last-child { margin-bottom: 0; }
-    .why-block strong { display: block; font-size: 18px; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 10px; color: var(--text-dark); }
-    .why-block p { font-size: 16px; line-height: 1.7; color: var(--text-muted-dark); }
-
-    /* BACKGROUND */
-    .background { padding: 140px 0; background: var(--bg-warm); }
-    .background-inner { max-width: 640px; margin: 0 auto; }
-    .background-inner p { font-size: 17px; line-height: 1.75; color: #333; margin-bottom: 20px; }
-    .background-inner p:last-child { margin-bottom: 0; }
-    .background-inner b { font-weight: 500; color: var(--text-dark); }
-
-    /* ABOUT */
-    .about { padding: 140px 0; background: var(--bg-light); }
-    .about-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 280px; gap: 64px; align-items: center; }
-    .about-text p { font-size: 17px; line-height: 1.75; color: #333; margin-bottom: 20px; }
-    .about-text p:last-child { margin-bottom: 0; }
-    .about-text b { font-weight: 500; color: var(--text-dark); }
-    .about-photo { display: flex; justify-content: center; }
-    .about-photo img { width: 280px; height: 340px; object-fit: cover; object-position: center top; border-radius: 4px; display: block; }
-
-    /* CTA / CONTACT */
-    .cta-section { padding: 180px 0; background: var(--bg-dark); }
-    .cta-section h2 { font-size: clamp(36px, 5vw, 56px); color: var(--text-light); margin-bottom: 24px; text-align: center; }
-    .cta-section > .cta-intro { font-size: 22px; line-height: 1.55; color: rgba(255,255,255,0.8); max-width: 500px; margin: 0 auto 40px; text-align: center; }
-    .contact-form { max-width: 560px; margin: 0 auto; text-align: left; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      padding: 12px 0;
-      font-size: 16px;
-      font-family: inherit;
-      background: transparent;
-      border: none;
-      border-bottom: 1px solid rgba(255,255,255,0.2);
-      border-radius: 0;
-      color: var(--text-light);
-      outline: none;
-      transition: border-color 0.15s;
-    }
-    .contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(255,255,255,0.35); }
-    .contact-form input:focus, .contact-form textarea:focus { border-bottom-color: rgba(255,255,255,0.7); }
-    .contact-form textarea { resize: vertical; margin-bottom: 24px; display: block; }
-    .contact-form .btn-submit {
-      display: block;
-      width: 100%;
-      text-align: center;
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--bg-dark);
-      background: var(--text-light);
-      padding: 14px 36px;
-      border-radius: 0;
-      border: none;
-      cursor: pointer;
-      transition: opacity 0.15s;
-      font-family: inherit;
-      margin-bottom: 12px;
-    }
-    .contact-form .btn-submit:hover { opacity: 0.85; }
-    .cta-sub { display: block; margin-top: 16px; font-size: 12px; color: rgba(255,255,255,0.35); letter-spacing: 0.02em; text-align: center; }
-
-    /* FOOTER */
-    footer { background: var(--bg-dark); border-top: 1px solid rgba(255,255,255,0.08); padding: 32px; }
-    .footer-inner { max-width: var(--max); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; font-size: 13px; color: rgba(255,255,255,0.35); }
-    .footer-inner a { color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.15s; }
-    .footer-inner a:hover { color: rgba(255,255,255,0.75); }
-
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-      .services-grid { grid-template-columns: 1fr; }
-      .about-inner { grid-template-columns: 1fr; }
-      .about-photo { order: -1; }
-    }
-    @media (max-width: 600px) {
-      .container { padding: 0 20px; }
-      .nav-inner { padding: 0 20px; }
-      .form-row { grid-template-columns: 1fr; }
-      .problem, .services, .why, .background, .about { padding: 80px 0; }
-      .cta-section { padding: 100px 0; }
-    }
-  </style>
+  <script defer src="assets/site.js"></script>
 </head>
 <body>
-
-  <!-- NAV -->
-  <nav id="nav">
+  <nav class="site-nav" id="site-nav">
     <div class="nav-inner">
-      <a href="/" class="nav-logo">Taival Tech</a>
-      <a href="#contact" class="nav-cta">Get in touch</a>
+      <a class="nav-logo" href="/">Taival Tech</a>
+      <ul class="nav-links">
+        <li><a href="#story" id="nav-story">Story</a></li>
+        <li><a href="#portfolio" id="nav-portfolio">Portfolio</a></li>
+        <li><a href="#services" id="nav-services">Services</a></li>
+        <li><a href="#blog" id="nav-blog">Blog</a></li>
+        <li><a href="#contact" id="nav-contact">Contact</a></li>
+      </ul>
+      <a class="nav-cta" href="#contact">Get in touch</a>
     </div>
   </nav>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-overlay"></div>
-    <div class="hero-content container">
-      <h1>I help hardware teams ship when it matters.</h1>
-      <p>I provide senior hardware engineering support: mechanical design, DFM, NPI, and full-cycle product development.</p>
-      <a href="#contact" class="btn">Get in touch</a>
+  <header class="hero">
+    <div class="hero-media" aria-hidden="true">
+      <video class="hero-video" autoplay muted loop playsinline poster="2026-03-03-hero-motor.png">
+        <source src="assets/hero-loop.mp4" type="video/mp4" />
+      </video>
+      <div class="hero-bg"></div>
+    </div>
+    <div class="container hero-content">
+      <span class="eyebrow">Senior hardware engineering, direct execution</span>
+      <h1>I help hardware teams ship when the pressure is real.</h1>
+      <p>I step in as a senior individual contributor: mechanical design, prototype validation, DFM/NPI, and first production support. No layers, no handoffs, no theater.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn">Get in touch</a>
+        <a href="#services" class="btn-ghost">See services</a>
+      </div>
       <span class="hero-tagline">Built, not templated.</span>
     </div>
-    <div class="scroll-indicator"></div>
-  </section>
+    <div class="scroll-indicator" aria-hidden="true"></div>
+  </header>
 
-  <!-- PROBLEM -->
-  <section class="problem reveal">
+  <section class="section section--light reveal" id="tenx">
     <div class="container">
-      <div class="problem-text">
-        <span class="label reveal-child" style="transition-delay: 0s">The problem</span>
-        <p class="reveal-child" style="transition-delay: 0.1s">I see this repeatedly: hardware startups don&#8217;t run out of ideas. They run out of senior engineering time at the worst moments &#8212; design reviews, supplier negotiations, or the week before a pilot run.</p>
-        <p class="reveal-child" style="transition-delay: 0.2s">Large consultancies are often slow to engage and expensive to keep. Too often, the senior engineer sells the project and a junior ends up doing the work.</p>
-        <p class="reveal-child" style="transition-delay: 0.3s">Independent freelancers move faster, but deep mechanical and system-level experience is rare. I&#8217;ve seen few people who have designed a drive unit from scratch, solved DFM failures at a contract manufacturer, and carried a first production run through.</p>
-        <p class="reveal-child" style="transition-delay: 0.4s">That&#8217;s the gap I fill: senior judgment, hands-on, when it counts.</p>
+      <span class="label reveal-child" style="transition-delay:0s">The 10x engineer angle, explained</span>
+      <h2 class="section-title reveal-child" style="transition-delay:0.08s">I don't mean magic productivity. I mean removing bottlenecks at the right moment.</h2>
+      <div class="grid-2">
+        <p class="reveal-child muted" style="transition-delay:0.16s">Most hardware teams are blocked by senior decisions, not junior effort. Tolerance stack-ups, supplier choices, test strategy, and pilot build trade-offs can burn weeks if the person making the call hasn't seen the same failure mode before.</p>
+        <p class="reveal-child muted" style="transition-delay:0.24s">My role is to shorten that cycle: identify the highest-risk decision early, make it explicit, and move the team forward with documented choices. That's where the real leverage comes from — not working 10x longer, but deciding better and earlier.</p>
       </div>
     </div>
   </section>
 
-  <!-- SERVICES -->
-  <section class="services reveal">
-    <div class="container">
-      <div class="services-header">
-        <span class="label reveal-child" style="transition-delay: 0s">Services</span>
-        <h2 class="reveal-child" style="transition-delay: 0.1s">Three ways to work with me.</h2>
+  <section class="section execution-model reveal" data-progress-section>
+    <div class="container execution-grid">
+      <div class="execution-sticky reveal-child" style="transition-delay:0s">
+        <div class="sticky-card">
+          <span class="label" style="margin-bottom:10px;color:rgba(255,255,255,0.72)">Execution rhythm</span>
+          <div class="progress-line"><span class="progress-fill"></span></div>
+          <p class="progress-note">One clear cadence: align on risk, test quickly, lock decisions, and prepare handoff so the team can keep moving without me.</p>
+        </div>
       </div>
-      <div class="services-grid">
-        <div class="service-card reveal-child" style="transition-delay: 0.2s">
-          <span class="service-tag">One-time</span>
-          <h3>Mechanical Design &amp; Review</h3>
-          <p>I can take hands-on CAD ownership or run a focused external review &#8212; structural, thermal, or electromechanical. You get either detailed design output or a written report with clear findings and prioritized actions.</p>
-          <p style="margin-top:16px;font-size:14px;color:#555555;">Use this when you need senior mechanical capacity now, or an independent read before committing to tooling.</p>
-        </div>
-        <div class="service-card reveal-child" style="transition-delay: 0.3s">
-          <span class="service-tag">Days to weeks</span>
-          <h3>Prototyping &amp; Testing</h3>
-          <p>I run structured prototyping and testing for electromechanical systems &#8212; from first PoC to functional validation. Scope can include build strategy, test planning, failure analysis, and iteration guidance.</p>
-          <p style="margin-top:16px;font-size:14px;color:#555555;">Use this when you&#8217;re building first pilot units or validating a design before it scales.</p>
-        </div>
-        <div class="service-card reveal-child" style="transition-delay: 0.4s">
-          <span class="service-tag">1&#8211;3 months</span>
-          <h3>NPI &amp; First Production</h3>
-          <p>I support new product introduction end to end &#8212; pre-production validation, pilot batch, DFM, supplier coordination, process definition, and factory-floor issue resolution.</p>
-          <p style="margin-top:16px;font-size:14px;color:#555555;">Use this when you&#8217;re launching a first or second hardware product and going through production for the first time.</p>
-        </div>
+      <div class="execution-steps">
+        <article class="step reveal-child" style="transition-delay:0.1s">
+          <h3>1. Frame the risk</h3>
+          <p>I start by isolating the one issue most likely to delay shipping: structural margin, manufacturability, assembly risk, or supplier readiness.</p>
+        </article>
+        <article class="step reveal-child" style="transition-delay:0.18s">
+          <h3>2. Build a fast proof loop</h3>
+          <p>Then we create the lightest useful test or prototype to confirm assumptions quickly instead of debating in meetings.</p>
+        </article>
+        <article class="step reveal-child" style="transition-delay:0.26s">
+          <h3>3. Lock decisions with trade-offs visible</h3>
+          <p>I write decisions down with what we gain, what we risk, and what must be monitored in the next build.</p>
+        </article>
+        <article class="step reveal-child" style="transition-delay:0.34s">
+          <h3>4. Ship to production reality</h3>
+          <p>Before handoff, I make sure drawings, BOM choices, and process assumptions survive contact with manufacturing.</p>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- WHY -->
-  <section class="why reveal">
+  <section class="section section--warm reveal" id="story">
     <div class="container">
-      <div class="why-inner">
-        <div class="why-header">
-          <span class="label reveal-child" style="transition-delay: 0s">Why Taival Tech</span>
-          <h2 class="reveal-child" style="transition-delay: 0.1s">How I work.</h2>
+      <span class="label reveal-child" style="transition-delay:0s">Story</span>
+      <h2 class="section-title reveal-child" style="transition-delay:0.08s">Revonte → Simucube → Verge → Taival.</h2>
+      <div class="story-line">
+        <div class="story-item reveal-child" style="transition-delay:0.14s">
+          <strong>Revonte</strong>
+          <p>I co-founded Revonte and worked the drive unit from blank-page architecture to production-ready hardware. That included gearing, cast parts, injection moulded parts, and line-level manufacturability decisions.</p>
         </div>
-        <div class="why-block reveal-child" style="transition-delay: 0.2s">
-          <strong>You work directly with me.</strong>
-          <p>No account manager, no relay chain. If we&#8217;re on a call, I&#8217;m the one with the CAD file open.</p>
+        <div class="story-item reveal-child" style="transition-delay:0.2s">
+          <strong>Simucube</strong>
+          <p>At Simucube I build high-performance sim racing products where precision, repeatability, and reliability are baseline, not stretch goals.</p>
         </div>
-        <div class="why-block reveal-child" style="transition-delay: 0.3s">
-          <strong>I stay selective on purpose.</strong>
-          <p>Large consultancies are incentivized to extend scope. I take a limited number of projects so the work stays useful and honest.</p>
+        <div class="story-item reveal-child" style="transition-delay:0.26s">
+          <strong>Verge</strong>
+          <p>At Verge Motorcycles I contribute to electric superbike engineering where package constraints and deadlines force real trade-off discipline.</p>
         </div>
-        <div class="why-block reveal-child" style="transition-delay: 0.4s">
-          <strong>I focus on the hard parts.</strong>
-          <p>Mechanical design, full-cycle development, DFM, NPI, supplier coordination, and production ramp for low-to-mid volume hardware. This is my core work.</p>
-        </div>
-        <div class="why-block reveal-child" style="transition-delay: 0.5s">
-          <strong>I work at startup pace.</strong>
-          <p>Direct answers, no status theater. If something is a risk, I&#8217;ll say it plainly.</p>
+        <div class="story-item reveal-child" style="transition-delay:0.32s">
+          <strong>Taival</strong>
+          <p>Taival Tech is how I package that experience for teams that need senior engineering support without building another management layer.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- BACKGROUND -->
-  <section class="background reveal">
+  <section class="section section--light reveal" id="portfolio">
     <div class="container">
-      <div class="background-inner">
-        <span class="label reveal-child" style="transition-delay: 0s">Background</span>
-        <p class="reveal-child" style="transition-delay: 0.1s">Taival Tech is not a firm. It&#8217;s me &#8212; one engineer who has built real products under real constraints.</p>
-        <p class="reveal-child" style="transition-delay: 0.2s">At <b>Revonte</b>, I co-founded the company and designed the drive unit system for a novel e-bike from scratch &#8212; mechanical architecture, gearing, injection-moulded and die cast components, and the path to a production line running 15&#8239;000 units a year. At <b>Simucube</b>, I work on high-performance sim racing hardware where precision and reliability are baseline requirements. At <b>Verge Motorcycles</b>, I contribute to electric superbike engineering where margins for error are tight and deadlines are real.</p>
-        <p class="reveal-child" style="transition-delay: 0.3s">That experience is what I bring to each project &#8212; not a generic framework, but practical judgment about what breaks, what matters at each stage, and where risks sit before they become problems.</p>
+      <span class="label reveal-child" style="transition-delay:0s">Portfolio</span>
+      <h2 class="section-title reveal-child" style="transition-delay:0.08s">Representative case snapshots.</h2>
+      <div class="grid-3">
+        <article class="card reveal-child" style="transition-delay:0.15s">
+          <span class="card-meta">System architecture</span>
+          <h3>Drive unit from concept to production intent</h3>
+          <p class="muted">Led mechanical architecture decisions, component strategy, and production-facing detail work for a high-complexity electromechanical drivetrain.</p>
+        </article>
+        <article class="card reveal-child" style="transition-delay:0.22s">
+          <span class="card-meta">Validation & iteration</span>
+          <h3>Performance hardware test loop redesign</h3>
+          <p class="muted">Restructured prototype testing around measurable failure criteria, reducing iteration ambiguity and improving handoff confidence to the product team.</p>
+        </article>
+        <article class="card reveal-child" style="transition-delay:0.29s">
+          <span class="card-meta">NPI support</span>
+          <h3>Pilot build readiness under schedule pressure</h3>
+          <p class="muted">Closed key DFM and assembly risks ahead of first batch build with supplier-facing actions, drawing updates, and clear go/no-go checkpoints.</p>
+        </article>
+      </div>
+      <p class="reveal-child" style="margin-top:24px;transition-delay:0.36s"><a class="inline-link" href="portfolio/">View full portfolio page</a></p>
+    </div>
+  </section>
+
+  <section class="section section--warm reveal" id="services">
+    <div class="container">
+      <span class="label reveal-child" style="transition-delay:0s">Services</span>
+      <h2 class="section-title reveal-child" style="transition-delay:0.08s">Three ways I typically plug into a team.</h2>
+      <div class="grid-3">
+        <article class="card reveal-child" style="transition-delay:0.14s">
+          <span class="card-meta">One-time / targeted</span>
+          <h3>Mechanical design review</h3>
+          <p class="muted">Focused external review or direct CAD contribution to de-risk critical architecture and manufacturability decisions.</p>
+        </article>
+        <article class="card reveal-child" style="transition-delay:0.22s">
+          <span class="card-meta">Days to weeks</span>
+          <h3>Prototyping & testing</h3>
+          <p class="muted">Structured build-and-learn loops for electromechanical systems with practical validation plans and failure analysis.</p>
+        </article>
+        <article class="card reveal-child" style="transition-delay:0.3s">
+          <span class="card-meta">1–3 months</span>
+          <h3>NPI & first production</h3>
+          <p class="muted">Pre-production readiness support across suppliers, DFM, assembly constraints, and pilot batch issue resolution.</p>
+        </article>
+      </div>
+      <p class="reveal-child" style="margin-top:24px;transition-delay:0.38s"><a class="inline-link" href="services/">Explore service detail pages</a></p>
+    </div>
+  </section>
+
+  <section class="section section--light reveal" id="blog">
+    <div class="container">
+      <span class="label reveal-child" style="transition-delay:0s">Blog</span>
+      <h2 class="section-title reveal-child" style="transition-delay:0.08s">Notes from the field.</h2>
+      <article class="card reveal-child" style="max-width:780px;transition-delay:0.16s">
+        <span class="card-meta">March 2026</span>
+        <h3>Why Odoo integration can make a hardware engineer more effective</h3>
+        <p class="muted">A practical view on where engineering time gets lost between CAD, purchasing, and production, and how integrated operations reduce coordination drag.</p>
+        <p style="margin-top:14px"><a class="inline-link" href="blog/odoo-integration-10x-engineer.html">Read article</a></p>
+      </article>
+      <p class="reveal-child" style="margin-top:24px;transition-delay:0.24s"><a class="inline-link" href="blog/">Open blog index</a></p>
+    </div>
+  </section>
+
+  <section class="section section--warm reveal" id="about">
+    <div class="container profile">
+      <div>
+        <span class="label reveal-child" style="transition-delay:0s">About</span>
+        <h2 class="section-title reveal-child" style="transition-delay:0.08s">I'm Iiro Peltola.</h2>
+        <p class="muted reveal-child" style="transition-delay:0.16s">I am a mechanical engineer who prefers hard constraints over abstract strategy. I work best in teams that need direct execution and honest risk calls.</p>
+        <p class="muted reveal-child" style="margin-top:16px;transition-delay:0.24s">If you need someone to own the difficult middle — between concept and production reality — that's where I can help.</p>
+      </div>
+      <div class="reveal-child" style="transition-delay:0.2s">
+        <img src="iiro.jpg" alt="Iiro Peltola" />
       </div>
     </div>
   </section>
 
-  <!-- ABOUT -->
-  <section class="about reveal">
+  <section class="section section--dark reveal" id="contact">
     <div class="container">
-      <div class="about-inner">
-        <div class="about-text">
-          <span class="label reveal-child" style="transition-delay: 0s">About</span>
-          <p class="reveal-child" style="transition-delay: 0.1s"><b>I&#8217;m Iiro Peltola</b>, a mechanical engineer who has spent most of my career in startup environments where the product ships or it doesn&#8217;t.</p>
-          <p class="reveal-child" style="transition-delay: 0.2s">At <b>Revonte</b>, I co-founded the company and led the drive unit from a blank CAD file to a functioning production line. At <b>Simucube</b>, I work as Lead Engineer on new products with tight tolerances and demanding users. At <b>Verge Motorcycles</b>, I contribute to an electric superbike program where engineering margin for error is minimal.</p>
-          <p class="reveal-child" style="transition-delay: 0.3s">I don&#8217;t claim to do everything. My depth is mechanical design, system engineering, DFM, NPI, supplier work, and full-cycle product development. That&#8217;s what I offer through Taival Tech.</p>
+      <span class="label reveal-child" style="transition-delay:0s;color:rgba(255,255,255,0.66)">Contact</span>
+      <h2 class="section-title reveal-child" style="transition-delay:0.08s">Tell me what you're building.</h2>
+      <p class="contact-intro reveal-child" style="transition-delay:0.16s">Send me a short message with your current stage and main blocker. If there's a fit, I'll reply with a concrete next step.</p>
+
+      <form action="https://formspree.io/f/xreadevk" method="POST" class="contact-form reveal-child" id="contact-form" style="transition-delay:0.24s">
+        <div class="form-row">
+          <input type="text" name="name" placeholder="Your name" required />
+          <input type="email" name="email" placeholder="Your email" required />
         </div>
-        <div class="about-photo reveal-child" style="transition-delay: 0.2s">
-          <img src="iiro.jpg" alt="Iiro Peltola" />
-        </div>
-      </div>
+        <textarea name="message" placeholder="What are you working on?" rows="4" required></textarea>
+        <button type="submit" class="btn-submit">Send message</button>
+        <span class="form-status" id="form-status">Typically respond within 1 business day.</span>
+      </form>
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section class="cta-section reveal" id="contact">
-    <h2 class="reveal-child" style="transition-delay: 0s">Tell me what you&#8217;re building.</h2>
-    <p class="cta-intro reveal-child" style="transition-delay: 0.1s">If this sounds like your situation, send me a short message. No sales call, no intake form &#8212; just a direct conversation about whether I can help.</p>
-    <form action="https://formspree.io/f/xreadevk" method="POST" class="contact-form reveal-child" id="contact-form" style="transition-delay: 0.2s">
-      <div class="form-row">
-        <input type="text" name="name" placeholder="Your name" required />
-        <input type="email" name="email" placeholder="Your email" required />
-      </div>
-      <textarea name="message" placeholder="What are you working on?" rows="4" required></textarea>
-      <button type="submit" class="btn-submit">Send message</button>
-      <span class="cta-sub" id="form-status">Typically respond within 1 business day.</span>
-    </form>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
+  <footer class="site-footer">
     <div class="footer-inner">
-      <span>&#169; 2026 Taival Tech Oy</span>
-      <div style="display:flex;gap:24px;">
-        <a href="https://linkedin.com/in/leotaival" target="_blank">LinkedIn</a>
+      <span>© 2026 Taival Tech Oy</span>
+      <div class="footer-links">
+        <a href="https://linkedin.com/in/leotaival" target="_blank" rel="noreferrer">LinkedIn</a>
         <a href="mailto:leo@taival.tech">leo@taival.tech</a>
       </div>
     </div>
   </footer>
-
-  <script>
-    /* Nav scroll */
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 10); });
-
-    /* Reveal on scroll */
-    const revealSections = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const children = entry.target.querySelectorAll('.reveal-child');
-          children.forEach(child => child.classList.add('visible'));
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '-40px' });
-    revealSections.forEach(section => observer.observe(section));
-
-    /* Contact form */
-    const form = document.getElementById('contact-form');
-    const status = document.getElementById('form-status');
-    if (form) {
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const btn = form.querySelector('button[type="submit"]');
-        btn.textContent = 'Sending...';
-        btn.disabled = true;
-        try {
-          const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
-          if (res.ok) {
-            form.innerHTML = '<p style="color:rgba(255,255,255,0.8);font-size:17px;text-align:center;padding:24px 0;">Message sent. Talk soon.</p>';
-          } else {
-            btn.textContent = 'Send message'; btn.disabled = false;
-            status.textContent = 'Something went wrong \u2014 try emailing directly.';
-          }
-        } catch {
-          btn.textContent = 'Send message'; btn.disabled = false;
-          status.textContent = 'Something went wrong \u2014 try emailing directly.';
-        }
-      });
-    }
-  </script>
-
 </body>
 </html>

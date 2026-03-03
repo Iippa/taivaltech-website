@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>We Automated Purchasing in Odoo So Engineering Time Stays in Engineering — Taival Tech</title>
+  <meta name="description" content="I automated purchasing admin in Odoo by connecting CAD data to part numbers, BOMs, RFQ/PO drafts, and follow-ups—so engineering time stays on engineering." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/site.css" />
+  <script defer src="../assets/site.js"></script>
+</head>
+<body>
+  <nav class="site-nav" id="site-nav">
+    <div class="nav-inner">
+      <a class="nav-logo" href="../index.html">Taival Tech</a>
+      <ul class="nav-links">
+        <li><a href="../index.html#story" id="nav-story">Story</a></li>
+        <li><a href="../portfolio/" id="nav-portfolio">Portfolio</a></li>
+        <li><a href="../services/" id="nav-services">Services</a></li>
+        <li><a href="../blog/" id="nav-blog">Blog</a></li>
+        <li><a href="../index.html#contact" id="nav-contact">Contact</a></li>
+      </ul>
+      <a class="nav-cta" href="../index.html#contact">Get in touch</a>
+    </div>
+  </nav>
+
+  <header class="page-hero" style="background:linear-gradient(rgba(6,6,6,0.64),rgba(6,6,6,0.84)),url('../2026-03-03-hero-motor.png') center/cover no-repeat;">
+    <div class="container reveal">
+      <span class="eyebrow reveal-child">Blog · Odoo / ERP</span>
+      <h1 class="reveal-child" style="transition-delay:0.08s">We Automated Purchasing in Odoo So Engineering Time Stays in Engineering</h1>
+      <p class="reveal-child" style="transition-delay:0.16s">How I connect CAD data, ERP structure, and procurement flow so senior engineering time stays on engineering decisions.</p>
+    </div>
+  </header>
+
+  <main class="section section--light">
+    <div class="container article reveal">
+      <p class="article-meta reveal-child" style="transition-delay:0s">March 3, 2026 · Iiro Peltola</p>
+
+      <p class="reveal-child" style="transition-delay:0.06s">If you run a hardware team, you already know this pattern: the bottleneck is often not design, simulation, or test execution. It is the admin work between engineering and purchasing.</p>
+
+      <p class="reveal-child" style="transition-delay:0.12s">As a one-man hardware design agency, I kept losing focus to part number cleanup, BOM formatting, RFQ drafting, PO creation, and supplier follow-up. All necessary, but not where core engineering value is created.</p>
+
+      <blockquote class="article-note reveal-child" style="transition-delay:0.18s">“If engineers are writing follow-up emails all afternoon, your process is broken.”</blockquote>
+
+      <h2 class="reveal-child" style="transition-delay:0.24s">The problem: engineering time was leaking into admin</h2>
+      <p class="reveal-child" style="transition-delay:0.3s">In small hardware teams, engineers often design the product and then manually translate their own work into ERP records and procurement documents. That creates constant context switching between technical decisions, supplier constraints, and documentation quality control. It is slow, and error-prone.</p>
+
+      <p class="reveal-child" style="transition-delay:0.36s">A wrong unit, duplicate part, or missing revision note can flow all the way to purchasing. So you lose twice: valuable engineering hours and data quality confidence.</p>
+
+      <h2 class="reveal-child" style="transition-delay:0.42s">What I built: CAD → ERP → procurement drafts</h2>
+      <p class="reveal-child" style="transition-delay:0.48s">I built an automation layer on top of standard Odoo workflows and tied it to CAD-originating data. The goal was practical: keep the ERP standard, remove repetitive data handling, keep human control where judgment matters.</p>
+
+      <h2 class="reveal-child" style="transition-delay:0.54s">1) CAD data to ERP part numbers and BOMs</h2>
+      <p class="reveal-child" style="transition-delay:0.6s">When design data is ready, structured logic generates or maps part numbers and creates BOM structure in ERP format. This is not blind automation. The flow applies naming rules, checks existing records, avoids duplicates, and builds draft master data with the correct hierarchy.</p>
+
+      <p class="reveal-child" style="transition-delay:0.66s">The key benefit is consistency. Instead of each engineer formatting data differently, the system applies the same model every time.</p>
+
+      <h2 class="reveal-child" style="transition-delay:0.72s">2) RFQ and PO drafts from approved structure</h2>
+      <p class="reveal-child" style="transition-delay:0.78s">Once BOM and sourcing context exist in ERP, the system drafts RFQs and purchase orders for review. Supplier matching uses existing vendor records, and required line-item fields are pre-filled from approved data.</p>
+
+      <p class="reveal-child" style="transition-delay:0.84s">Important: these are drafts. Commercial commitments are still human-reviewed before anything is sent.</p>
+
+      <h2 class="reveal-child" style="transition-delay:0.9s">3) Supplier follow-up as a system, not memory</h2>
+      <p class="reveal-child" style="transition-delay:0.96s">After a PO is placed, follow-up is driven by status and timing rules instead of ad-hoc reminders. This reduces dropped communication threads and makes open actions visible without extra manual tracking.</p>
+
+      <h2 class="reveal-child" style="transition-delay:1.02s">Practical outcomes</h2>
+      <ul class="reveal-child" style="transition-delay:1.08s">
+        <li><strong>Faster flow:</strong> work starts from structured drafts, not blank documents.</li>
+        <li><strong>Fewer clerical errors:</strong> consistent generation reduces copy/paste drift.</li>
+        <li><strong>Better traceability:</strong> easier to answer what changed, when, and why.</li>
+      </ul>
+
+      <h2 class="reveal-child" style="transition-delay:1.14s">What is not automated (on purpose)</h2>
+      <p class="reveal-child" style="transition-delay:1.2s">I do not automate judgment. Final technical approval, supplier strategy trade-offs, negotiation, and exception handling remain human responsibilities. Automation handles repetitive transformation and coordination; humans keep ownership of decisions.</p>
+
+      <h2 class="reveal-child" style="transition-delay:1.26s">Closing</h2>
+      <p class="reveal-child" style="transition-delay:1.32s">The point is simple: engineering time should stay in engineering. Industry-standard ERP plus focused AI automation can create real leverage — not by replacing people, but by removing repetitive admin load from senior technical work.</p>
+
+      <p class="reveal-child" style="transition-delay:1.38s">If this bottleneck sounds familiar in your team, contact me at Taival Tech. I can map your CAD-to-procurement flow and show what is practical to automate without losing control.</p>
+
+      <p class="reveal-child" style="margin-top:26px;transition-delay:1.44s"><a class="inline-link" href="../index.html#contact">Get in touch</a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>© 2026 Taival Tech Oy</span>
+      <div class="footer-links">
+        <a href="index.html">Back to blog</a>
+        <a href="mailto:leo@taival.tech">leo@taival.tech</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
