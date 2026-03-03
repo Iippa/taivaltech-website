@@ -124,12 +124,31 @@ section[id] {
 }
 
 .nav-logo {
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 500;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   color: #ffffff;
   text-decoration: none;
   white-space: nowrap;
+  transition: color 0.25s ease;
+}
+/* Nav light mode — over light sections */
+.site-nav.nav-light .nav-logo,
+.site-nav.nav-light .nav-links a,
+.site-nav.nav-light .nav-cta--text {
+  color: #0a0a0a;
+}
+.site-nav.nav-light .nav-hamburger span {
+  background: #0a0a0a;
+}
+.site-nav.nav-light {
+  background: rgba(255,255,255,0.92);
+  border-bottom-color: rgba(0,0,0,0.06);
+  backdrop-filter: blur(10px);
+}
+.site-nav.scrolled.nav-light {
+  background: rgba(255,255,255,0.96);
+  border-bottom-color: rgba(0,0,0,0.08);
 }
 
 .nav-links {
@@ -173,7 +192,21 @@ section[id] {
   border: 1px solid rgba(255, 255, 255, 0.35);
   padding: 9px 18px;
 }
-
+/* Plain text link variant (IXI style) */
+.nav-cta--text {
+  border: none;
+  padding: 0;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: rgba(255,255,255,0.82);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.nav-cta--text:hover {
+  background: none;
+  color: #ffffff;
+}
 .nav-cta:hover {
   background: #ffffff;
   color: var(--bg-dark);
@@ -782,14 +815,12 @@ section[id] {
   transition: transform 0.22s ease, opacity 0.22s ease;
   transform-origin: center;
 }
+/* 2-line hamburger: top ↘ / bottom ↗ */
 .nav-hamburger[aria-expanded="true"] span:nth-child(1) {
-  transform: translateY(6.5px) rotate(45deg);
+  transform: translateY(3.5px) rotate(45deg);
 }
 .nav-hamburger[aria-expanded="true"] span:nth-child(2) {
-  opacity: 0;
-}
-.nav-hamburger[aria-expanded="true"] span:nth-child(3) {
-  transform: translateY(-6.5px) rotate(-45deg);
+  transform: translateY(-3.5px) rotate(-45deg);
 }
 
 /* ── Mobile drawer (full-screen IXI-style) ── */
@@ -896,25 +927,17 @@ section[id] {
     display: none;
   }
 
-  /* CTA: icon-only on very small, short text otherwise */
-  .nav-cta {
+  /* CTA: plain text right */
+  .nav-cta, .nav-cta--text {
     grid-column: 3;
     justify-self: end;
-    font-size: 0; /* hide text, show only via ::after */
-    padding: 7px 10px;
+    font-size: 13px;
+    padding: 0;
+    border: none;
     white-space: nowrap;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
+    color: rgba(255,255,255,0.78);
   }
-  .nav-cta::after {
-    content: '→';
-    font-size: 18px;
-    font-weight: 400;
-    color: #ffffff;
-  }
+  .nav-cta::after { display: none; }
 
   .nav-drawer {
     display: flex;

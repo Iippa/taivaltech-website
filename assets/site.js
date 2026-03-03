@@ -36,6 +36,31 @@
   handleNavScroll();
   window.addEventListener('scroll', handleNavScroll, { passive: true });
 
+  // ── Nav color adapts to page background ──
+  // Light sections get nav-light class; dark sections default (white text)
+  if ('IntersectionObserver' in window && nav) {
+    const darkSections = document.querySelectorAll('.hero, .section--dark, .execution-model, [data-nav="dark"]');
+    const lightSections = document.querySelectorAll('.section--light, .section--warm, [data-nav="light"]');
+    let lightCount = 0;
+    const themeObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const isLight = entry.target.matches('.section--light, .section--warm, [data-nav="light"]');
+        if (entry.isIntersecting) {
+          if (isLight) lightCount++;
+          else lightCount = Math.max(0, lightCount - 1);
+        } else {
+          if (isLight) lightCount = Math.max(0, lightCount - 1);
+        }
+        nav.classList.toggle('nav-light', lightCount > 0 && window.scrollY > 120);
+      });
+    }, { threshold: 0.3 });
+    [...darkSections, ...lightSections].forEach((s) => themeObserver.observe(s));
+    // Recalc on scroll to handle edge cases
+    window.addEventListener('scroll', () => {
+      if (window.scrollY <= 120) { nav.classList.remove('nav-light'); return; }
+    }, { passive: true });
+  }
+
   const revealSections = document.querySelectorAll('.reveal');
   const revealAll = () => {
     revealSections.forEach((section) => {

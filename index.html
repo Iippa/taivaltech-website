@@ -16,7 +16,7 @@
 <body>
   <nav class="site-nav" id="site-nav">
     <div class="nav-inner">
-      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
       <a class="nav-logo" href="/">Taival Tech</a>
       <ul class="nav-links">
         <li><a href="#story" id="nav-story">Story</a></li>
@@ -25,7 +25,7 @@
         <li><a href="#blog" id="nav-blog">Blog</a></li>
         <li><a href="#contact" id="nav-contact">Contact</a></li>
       </ul>
-      <a class="nav-cta" href="#contact">Get in touch</a>
+      <a class="nav-cta nav-cta--text" href="#contact">Get in touch</a>
     </div>
   </nav>
   <div class="nav-drawer" id="nav-drawer" aria-hidden="true">
@@ -45,7 +45,7 @@
   <header class="hero">
     <div class="hero-media" aria-hidden="true">
       <video class="hero-video" autoplay muted loop playsinline poster="2026-03-03-hero-motor.png">
-        <source src="assets/hero-loop.mp4" type="video/mp4" />
+        <source src="assets/clip-cnc-lathe.mp4" type="video/mp4" />
       </video>
       <div class="hero-bg"></div>
     </div>
@@ -61,82 +61,7 @@
     </div>
     <div class="scroll-indicator" aria-hidden="true"></div>
   </header>
-
-  <div class="video-break">
-    <video autoplay muted loop playsinline class="video-break__vid">
-      <source src="assets/clip-motor-zoom.mp4" type="video/mp4" />
-    </video>
-  </div>
-
-  <section class="section section--light reveal" id="tenx">
-    <div class="container">
-      <span class="label reveal-child" style="transition-delay:0s">The 10x engineer angle, explained</span>
-      <h2 class="section-title reveal-child" style="transition-delay:0.08s">I don't mean magic productivity. I mean removing bottlenecks at the right moment.</h2>
-      <div class="grid-2">
-        <p class="reveal-child muted" style="transition-delay:0.16s">Most hardware teams are blocked by senior decisions, not junior effort. Tolerance stack-ups, supplier choices, test strategy, and pilot build trade-offs can burn weeks if the person making the call hasn't seen the same failure mode before.</p>
-        <p class="reveal-child muted" style="transition-delay:0.24s">My role is to shorten that cycle: identify the highest-risk decision early, make it explicit, and move the team forward with documented choices. That's where the real leverage comes from — not working 10x longer, but deciding better and earlier.</p>
-      </div>
-    </div>
   </section>
-
-  <section class="section execution-model reveal" data-progress-section>
-    <div class="container execution-grid">
-      <div class="execution-sticky reveal-child" style="transition-delay:0s">
-        <div class="sticky-card">
-          <span class="label" style="margin-bottom:10px;color:rgba(255,255,255,0.72)">Execution rhythm</span>
-          <div class="progress-line"><span class="progress-fill"></span></div>
-          <p class="progress-note">One clear cadence: align on risk, test quickly, lock decisions, and prepare handoff so the team can keep moving without me.</p>
-        </div>
-      </div>
-      <div class="execution-steps">
-        <article class="step reveal-child" style="transition-delay:0.1s">
-          <h3>1. Frame the risk</h3>
-          <p>I start by isolating the one issue most likely to delay shipping: structural margin, manufacturability, assembly risk, or supplier readiness.</p>
-        </article>
-        <article class="step reveal-child" style="transition-delay:0.18s">
-          <h3>2. Build a fast proof loop</h3>
-          <p>Then we create the lightest useful test or prototype to confirm assumptions quickly instead of debating in meetings.</p>
-        </article>
-        <article class="step reveal-child" style="transition-delay:0.26s">
-          <h3>3. Lock decisions with trade-offs visible</h3>
-          <p>I write decisions down with what we gain, what we risk, and what must be monitored in the next build.</p>
-        </article>
-        <article class="step reveal-child" style="transition-delay:0.34s">
-          <h3>4. Ship to production reality</h3>
-          <p>Before handoff, I make sure drawings, BOM choices, and process assumptions survive contact with manufacturing.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <div class="video-break">
-    <video autoplay muted loop playsinline class="video-break__vid">
-      <source src="assets/clip-tools-pan.mp4" type="video/mp4" />
-    </video>
-  </div>
-
-  <section class="section section--warm reveal" id="story">
-    <div class="container">
-      <span class="label reveal-child" style="transition-delay:0s">Story</span>
-      <h2 class="section-title reveal-child" style="transition-delay:0.08s">Revonte → Simucube → Verge → Taival.</h2>
-      <div class="story-line">
-        <div class="story-item reveal-child" style="transition-delay:0.14s">
-          <strong>Revonte</strong>
-          <p>I co-founded Revonte and worked the drive unit from blank-page architecture to production-ready hardware. That included gearing, cast parts, injection moulded parts, and line-level manufacturability decisions.</p>
-        </div>
-        <div class="story-item reveal-child" style="transition-delay:0.2s">
-          <strong>Simucube</strong>
-          <p>At Simucube I build high-performance sim racing products where precision, repeatability, and reliability are baseline, not stretch goals.</p>
-        </div>
-        <div class="story-item reveal-child" style="transition-delay:0.26s">
-          <strong>Verge</strong>
-          <p>At Verge Motorcycles I contribute to electric superbike engineering where package constraints and deadlines force real trade-off discipline.</p>
-        </div>
-        <div class="story-item reveal-child" style="transition-delay:0.32s">
-          <strong>Taival</strong>
-          <p>Taival Tech is how I package that experience for teams that need senior engineering support without building another management layer.</p>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -147,47 +72,6 @@
       <p class="reveal-child" style="margin-top:28px;transition-delay:0.16s"><a class="inline-link" href="portfolio/">View case snapshots →</a></p>
     </div>
   </section>
-
-  <div class="video-break">
-    <video autoplay muted loop playsinline class="video-break__vid">
-      <source src="assets/clip-proto-zoom.mp4" type="video/mp4" />
-    </video>
-  </div>
-
-  <section class="section section--warm reveal" id="services">
-    <div class="container">
-      <span class="label reveal-child" style="transition-delay:0s">Services</span>
-      <h2 class="section-title reveal-child" style="transition-delay:0.08s">Three ways to engage.</h2>
-      <ul class="services-index-list reveal-child" style="transition-delay:0.16s">
-        <li><a href="services/mechanical-design-review.html"><span class="sil-name">Mechanical design review</span><span class="sil-type">One-time</span></a></li>
-        <li><a href="services/prototyping-testing.html"><span class="sil-name">Prototyping &amp; testing</span><span class="sil-type">Days to weeks</span></a></li>
-        <li><a href="services/npi-first-production.html"><span class="sil-name">NPI &amp; first production</span><span class="sil-type">1–3 months</span></a></li>
-      </ul>
-      <p class="reveal-child" style="margin-top:28px;transition-delay:0.28s"><a class="inline-link" href="services/">See all service details →</a></p>
-    </div>
-  </section>
-
-  <section class="section section--light reveal" id="blog">
-    <div class="container">
-      <span class="label reveal-child" style="transition-delay:0s">Blog</span>
-      <h2 class="section-title reveal-child" style="transition-delay:0.08s">Notes from the field.</h2>
-      <p class="reveal-child muted" style="transition-delay:0.16s;max-width:560px">Latest: <a class="inline-link" href="blog/odoo-integration-10x-engineer.html">Automating purchasing in Odoo — engineering time back where it belongs</a></p>
-      <p class="reveal-child" style="margin-top:28px;transition-delay:0.24s"><a class="inline-link" href="blog/">All articles →</a></p>
-    </div>
-  </section>
-
-  <section class="section section--warm reveal" id="about">
-    <div class="container profile">
-      <div>
-        <span class="label reveal-child" style="transition-delay:0s">About</span>
-        <h2 class="section-title reveal-child" style="transition-delay:0.08s">I'm Iiro Peltola.</h2>
-        <p class="muted reveal-child" style="transition-delay:0.16s">I am a mechanical engineer who prefers hard constraints over abstract strategy. I work best in teams that need direct execution and honest risk calls.</p>
-        <p class="muted reveal-child" style="margin-top:16px;transition-delay:0.24s">If you need someone to own the difficult middle — between concept and production reality — that's where I can help.</p>
-      </div>
-      <div class="reveal-child" style="transition-delay:0.2s">
-        <img src="iiro.jpg" alt="Iiro Peltola" />
-      </div>
-    </div>
   </section>
 
   <section class="section section--dark reveal" id="contact">
