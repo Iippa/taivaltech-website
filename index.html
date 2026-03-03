@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -7,86 +7,308 @@
   <meta name="description" content="Senior hardware engineering consulting. Mechanical design, DFM, NPI, full-cycle product development. Independent. No overhead." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <!-- Umami Analytics -->
   <script defer src="https://cloud.umami.is/script.js" data-website-id="70021f70-13da-4fe8-9bda-048209e705a2"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --black: #111111; --muted: #6B6B6B; --border: #E5E5E5;
-      --bg: #FAFAFA; --bg-alt: #F4F4F4; --bg-dark: #111111;
-      --white: #FFFFFF; --green: #717F71; --green-light: #EFF2EF;
-      --max: 1140px; --text-max: 720px; --col-max: 640px;
+      --bg-dark: #0a0a0a;
+      --bg-light: #ffffff;
+      --bg-warm: #f6f5f1;
+      --text-light: #f5f0e8;
+      --text-muted-light: rgba(255,255,255,0.55);
+      --text-dark: #0a0a0a;
+      --text-muted-dark: #555555;
+      --accent: #8a9aa8;
+      --max: 1140px;
     }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 17px; line-height: 1.65; color: var(--black); background: var(--white); -webkit-font-smoothing: antialiased; }
-    nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid transparent; transition: border-color 0.2s; }
-    nav.scrolled { border-bottom-color: var(--border); }
-    .nav-inner { max-width: var(--max); margin: 0 auto; padding: 0 32px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
-    .nav-logo { font-size: 15px; font-weight: 600; letter-spacing: -0.01em; color: var(--black); text-decoration: none; }
-    .nav-cta { font-size: 14px; font-weight: 500; color: var(--white); background: var(--green); padding: 9px 20px; border-radius: 4px; text-decoration: none; transition: opacity 0.15s; }
-    .nav-cta:hover { opacity: 0.8; }
-    .container { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
-    .label { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); margin-bottom: 28px; display: block; }
-    .hero { padding: 160px 0 140px; background: var(--white); }
-    .hero h1 { font-size: clamp(44px, 6vw, 72px); font-weight: 500; letter-spacing: -0.03em; line-height: 1.1; max-width: var(--text-max); margin-bottom: 28px; color: var(--black); }
-    .hero p { font-size: 19px; line-height: 1.6; color: var(--muted); max-width: 560px; margin-bottom: 40px; }
-    .btn { display: inline-block; font-size: 15px; font-weight: 500; color: var(--white); background: var(--green); padding: 13px 28px; border-radius: 4px; text-decoration: none; transition: opacity 0.15s; }
-    .btn:hover { opacity: 0.8; }
-    .hero-tagline { display: block; margin-top: 20px; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
-    .problem { padding: 120px 0; background: var(--bg); border-top: 1px solid var(--border); }
-    .problem-text { max-width: var(--col-max); margin: 0 auto; text-align: left; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--text-dark);
+      background: var(--bg-light);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* TYPOGRAPHY */
+    h1, h2, h3 { font-weight: 300; letter-spacing: -0.03em; }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: transparent;
+      border-bottom: 1px solid transparent;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    nav.scrolled {
+      background: rgba(10,10,10,0.96);
+      border-bottom-color: rgba(255,255,255,0.08);
+    }
+    .nav-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 40px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: #fff;
+      text-decoration: none;
+    }
+    .nav-cta {
+      font-size: 14px;
+      font-weight: 500;
+      color: #fff;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 8px 20px;
+      border-radius: 0;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-cta:hover { background: #fff; color: var(--bg-dark); }
+
+    /* CONTAINER */
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 40px; }
+
+    /* LABELS */
+    .label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 28px;
+      display: block;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      background: var(--bg-dark);
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('2026-03-03-hero-motor.png') center / cover no-repeat;
+      animation: kenBurns 25s infinite alternate ease;
+    }
+    @keyframes kenBurns {
+      0% { transform: scale(1.0); }
+      100% { transform: scale(1.08); }
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+    }
+    .hero-content { position: relative; z-index: 2; }
+    .hero h1 {
+      font-size: clamp(52px, 7vw, 88px);
+      line-height: 1.08;
+      color: var(--text-light);
+      margin-bottom: 28px;
+    }
+    .hero p {
+      font-size: 19px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.65);
+      max-width: 560px;
+      margin-bottom: 40px;
+    }
+    .btn {
+      display: inline-block;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--bg-dark);
+      background: var(--text-light);
+      padding: 14px 36px;
+      border-radius: 0;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+    .btn:hover { opacity: 0.85; }
+    .hero-tagline {
+      display: block;
+      margin-top: 20px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+    }
+    .scroll-indicator {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+    }
+    .scroll-indicator::before {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 48px;
+      background: rgba(255,255,255,0.3);
+      animation: scrollPulse 2.5s infinite ease;
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.15; transform: scaleY(0.5); transform-origin: top; }
+      50% { opacity: 0.5; transform: scaleY(1); transform-origin: top; }
+    }
+
+    /* REVEAL ANIMATIONS */
+    .reveal-child {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal-child.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* PROBLEM */
+    .problem { padding: 140px 0; background: var(--bg-light); }
+    .problem-text { max-width: 640px; margin: 0 auto; }
     .problem-text p { font-size: 18px; line-height: 1.7; color: #333; margin-bottom: 20px; }
     .problem-text p:last-child { margin-bottom: 0; }
-    .services { padding: 120px 0; background: var(--white); }
+
+    /* SERVICES */
+    .services {
+      position: relative;
+      overflow: hidden;
+      padding: 140px 0;
+      background: var(--bg-warm);
+    }
+    .services::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('2026-03-03-services-tools.png') center / cover no-repeat;
+      opacity: 0.06;
+      filter: grayscale(100%) contrast(1.05);
+      pointer-events: none;
+    }
+    .services .container { position: relative; z-index: 1; }
     .services-header { margin-bottom: 56px; }
-    .services-header h2 { font-size: 32px; font-weight: 500; letter-spacing: -0.02em; color: var(--black); }
-    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .service-card { border: 1px solid var(--border); border-radius: 6px; padding: 36px 32px; background: var(--white); }
-    .service-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green); margin-bottom: 16px; display: block; }
-    .service-card h3 { font-size: 20px; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 16px; color: var(--black); }
-    .service-card p { font-size: 15px; line-height: 1.65; color: #444; }
-    .why { padding: 120px 0; background: var(--bg-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .why-inner { max-width: var(--text-max); margin: 0 auto; }
+    .services-header h2 { font-size: clamp(36px, 5vw, 56px); color: var(--text-dark); }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+    .service-card { border-top: 2px solid var(--text-dark); padding-top: 24px; }
+    .service-tag {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+      display: block;
+    }
+    .service-card h3 { font-size: 20px; font-weight: 400; letter-spacing: -0.01em; margin-bottom: 16px; color: var(--text-dark); }
+    .service-card p { font-size: 15px; line-height: 1.65; color: var(--text-muted-dark); }
+
+    /* WHY */
+    .why { padding: 140px 0; background: var(--bg-light); }
+    .why-inner { max-width: 720px; margin: 0 auto; }
     .why-header { margin-bottom: 56px; }
-    .why-header h2 { font-size: 32px; font-weight: 500; letter-spacing: -0.02em; }
+    .why-header h2 { font-size: clamp(36px, 5vw, 56px); color: var(--text-dark); }
     .why-block { margin-bottom: 48px; }
     .why-block:last-child { margin-bottom: 0; }
-    .why-block strong { display: block; font-size: 18px; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 10px; color: var(--black); }
-    .why-block p { font-size: 16px; line-height: 1.7; color: #444; }
-    .background { padding: 120px 0; background: var(--white); }
-    .background-inner { max-width: var(--col-max); margin: 0 auto; }
+    .why-block strong { display: block; font-size: 18px; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 10px; color: var(--text-dark); }
+    .why-block p { font-size: 16px; line-height: 1.7; color: var(--text-muted-dark); }
+
+    /* BACKGROUND */
+    .background { padding: 140px 0; background: var(--bg-warm); }
+    .background-inner { max-width: 640px; margin: 0 auto; }
     .background-inner p { font-size: 17px; line-height: 1.75; color: #333; margin-bottom: 20px; }
     .background-inner p:last-child { margin-bottom: 0; }
-    .background-inner b { font-weight: 500; color: var(--black); }
-    .about { padding: 120px 0; background: var(--bg); border-top: 1px solid var(--border); }
-    .about-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 240px; gap: 64px; align-items: center; }
+    .background-inner b { font-weight: 500; color: var(--text-dark); }
+
+    /* ABOUT */
+    .about { padding: 140px 0; background: var(--bg-light); }
+    .about-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 280px; gap: 64px; align-items: center; }
     .about-text p { font-size: 17px; line-height: 1.75; color: #333; margin-bottom: 20px; }
     .about-text p:last-child { margin-bottom: 0; }
-    .about-text b { font-weight: 500; color: var(--black); }
+    .about-text b { font-weight: 500; color: var(--text-dark); }
     .about-photo { display: flex; justify-content: center; }
-    .about-photo { background: #1a1f1a; border-radius: 50%; width: 240px; height: 240px; overflow: hidden; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .about-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 8%; display: block; }
-    @media (max-width: 800px) { .about-inner { grid-template-columns: 1fr; } .about-photo { order: -1; } }
-    .cta-section { padding: 160px 32px; background: var(--bg-dark); text-align: center; }
-    .cta-section p { font-size: 22px; line-height: 1.55; color: rgba(255,255,255,0.8); max-width: 500px; margin: 0 auto 40px; }
-    .btn-light { display: inline-block; font-size: 15px; font-weight: 500; color: var(--white); background: var(--green); padding: 13px 28px; border-radius: 4px; text-decoration: none; transition: opacity 0.15s; }
-    .btn-light:hover { opacity: 0.85; }
-    .cta-sub { display: block; margin-top: 16px; font-size: 12px; color: rgba(255,255,255,0.35); letter-spacing: 0.02em; }
+    .about-photo img { width: 280px; height: 340px; object-fit: cover; object-position: center top; border-radius: 4px; display: block; }
+
+    /* CTA / CONTACT */
+    .cta-section { padding: 180px 0; background: var(--bg-dark); }
+    .cta-section h2 { font-size: clamp(36px, 5vw, 56px); color: var(--text-light); margin-bottom: 24px; text-align: center; }
+    .cta-section > .cta-intro { font-size: 22px; line-height: 1.55; color: rgba(255,255,255,0.8); max-width: 500px; margin: 0 auto 40px; text-align: center; }
+    .contact-form { max-width: 560px; margin: 0 auto; text-align: left; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px 0;
+      font-size: 16px;
+      font-family: inherit;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      border-radius: 0;
+      color: var(--text-light);
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(255,255,255,0.35); }
+    .contact-form input:focus, .contact-form textarea:focus { border-bottom-color: rgba(255,255,255,0.7); }
+    .contact-form textarea { resize: vertical; margin-bottom: 24px; display: block; }
+    .contact-form .btn-submit {
+      display: block;
+      width: 100%;
+      text-align: center;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--bg-dark);
+      background: var(--text-light);
+      padding: 14px 36px;
+      border-radius: 0;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.15s;
+      font-family: inherit;
+      margin-bottom: 12px;
+    }
+    .contact-form .btn-submit:hover { opacity: 0.85; }
+    .cta-sub { display: block; margin-top: 16px; font-size: 12px; color: rgba(255,255,255,0.35); letter-spacing: 0.02em; text-align: center; }
+
+    /* FOOTER */
     footer { background: var(--bg-dark); border-top: 1px solid rgba(255,255,255,0.08); padding: 32px; }
     .footer-inner { max-width: var(--max); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; font-size: 13px; color: rgba(255,255,255,0.35); }
     .footer-inner a { color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.15s; }
     .footer-inner a:hover { color: rgba(255,255,255,0.75); }
-    @media (max-width: 900px) { .services-grid { grid-template-columns: 1fr; } .hero { padding: 100px 0 80px; } .hero h1 { font-size: 40px; } }
-    @media (max-width: 600px) { .container { padding: 0 20px; } .nav-inner { padding: 0 20px; } .hero h1 { font-size: 34px; } .hero p { font-size: 17px; } .why-inner { max-width: 100%; } }
-    .contact-form { max-width: 560px; margin: 0 auto; text-align: left; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
-    .contact-form input, .contact-form textarea { width: 100%; padding: 12px 16px; font-size: 15px; font-family: inherit; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 4px; color: var(--white); outline: none; transition: border-color 0.15s; }
-    .contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(255,255,255,0.35); }
-    .contact-form input:focus, .contact-form textarea:focus { border-color: rgba(255,255,255,0.4); }
-    .contact-form textarea { resize: vertical; margin-bottom: 12px; display: block; }
-    .contact-form .btn-light { width: 100%; text-align: center; cursor: pointer; border: none; font-size: 15px; margin-bottom: 12px; }
-    @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .about-inner { grid-template-columns: 1fr; }
+      .about-photo { order: -1; }
+    }
+    @media (max-width: 600px) {
+      .container { padding: 0 20px; }
+      .nav-inner { padding: 0 20px; }
+      .form-row { grid-template-columns: 1fr; }
+      .problem, .services, .why, .background, .about { padding: 80px 0; }
+      .cta-section { padding: 100px 0; }
+    }
   </style>
 </head>
 <body>
@@ -101,78 +323,81 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="container">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content container">
       <h1>One engineer. The right one.</h1>
-      <p>Most hardware projects don&#8217;t fail &#8212; they stall. Senior engineering time runs out at exactly the wrong moment: during a design review, a supplier meeting, or the first production run. Taival Tech is one engineer, working directly on your problem. No account managers. No overhead. Just the work.</p>
+      <p>Senior hardware engineering consulting. Mechanical design, DFM, NPI, full-cycle product development.</p>
       <a href="#contact" class="btn">Get in touch</a>
       <span class="hero-tagline">Built, not templated.</span>
     </div>
+    <div class="scroll-indicator"></div>
   </section>
 
   <!-- PROBLEM -->
-  <section class="problem">
+  <section class="problem reveal">
     <div class="container">
       <div class="problem-text">
-        <span class="label">The problem</span>
-        <p>Hardware startups don&#8217;t run out of ideas. They run out of senior engineering time at the worst possible moments &#8212; design reviews, supplier negotiations, the week before a pilot production run.</p>
-        <p>Large consultancies are slow to engage and expensive to keep. When they do show up, the senior engineer presents the pitch. A junior does the work.</p>
-        <p>Freelancers are faster, but deep mechanical and system-level experience is rare. Most have breadth. Few have designed a drive unit from scratch, resolved a DFM failure at a contract manufacturer, and survived a first production run.</p>
-        <p>That&#8217;s the gap. Not engineering in general &#8212; senior judgment, available when it counts.</p>
+        <span class="label reveal-child" style="transition-delay: 0s">The problem</span>
+        <p class="reveal-child" style="transition-delay: 0.1s">Hardware startups don&#8217;t run out of ideas. They run out of senior engineering time at the worst possible moments &#8212; design reviews, supplier negotiations, the week before a pilot production run.</p>
+        <p class="reveal-child" style="transition-delay: 0.2s">Large consultancies are slow to engage and expensive to keep. When they do show up, the senior engineer presents the pitch. A junior does the work.</p>
+        <p class="reveal-child" style="transition-delay: 0.3s">Freelancers are faster, but deep mechanical and system-level experience is rare. Most have breadth. Few have designed a drive unit from scratch, resolved a DFM failure at a contract manufacturer, and survived a first production run.</p>
+        <p class="reveal-child" style="transition-delay: 0.4s">That&#8217;s the gap. Not engineering in general &#8212; senior judgment, available when it counts.</p>
       </div>
     </div>
   </section>
 
   <!-- SERVICES -->
-  <section class="services">
+  <section class="services reveal">
     <div class="container">
       <div class="services-header">
-        <span class="label">Services</span>
-        <h2>Three ways to work together.</h2>
+        <span class="label reveal-child" style="transition-delay: 0s">Services</span>
+        <h2 class="reveal-child" style="transition-delay: 0.1s">Three ways to work together.</h2>
       </div>
       <div class="services-grid">
-        <div class="service-card">
+        <div class="service-card reveal-child" style="transition-delay: 0.2s">
           <span class="service-tag">One-time</span>
           <h3>Mechanical Design &amp; Review</h3>
           <p>Hands-on CAD work or a focused external review &#8212; structural, thermal, or electromechanical. Delivered as detailed design output or a written report with clear findings and prioritized action items.</p>
-          <p style="margin-top:16px;font-size:14px;color:var(--muted);">For teams that need senior mechanical capacity now, or an independent read before committing to tooling.</p>
+          <p style="margin-top:16px;font-size:14px;color:#555555;">For teams that need senior mechanical capacity now, or an independent read before committing to tooling.</p>
         </div>
-        <div class="service-card">
+        <div class="service-card reveal-child" style="transition-delay: 0.3s">
           <span class="service-tag">Days to weeks</span>
           <h3>Prototyping &amp; Testing</h3>
           <p>Structured prototyping and testing for electromechanical systems &#8212; from first PoC to functional validation. Covers build strategy, test plan, failure analysis, and iteration guidance.</p>
-          <p style="margin-top:16px;font-size:14px;color:var(--muted);">For teams building first pilot units or validating a design before it scales.</p>
+          <p style="margin-top:16px;font-size:14px;color:#555555;">For teams building first pilot units or validating a design before it scales.</p>
         </div>
-        <div class="service-card">
+        <div class="service-card reveal-child" style="transition-delay: 0.4s">
           <span class="service-tag">1&#8211;3 months</span>
           <h3>NPI &amp; First Production</h3>
           <p>End-to-end support through new product introduction &#8212; pre-production validation, pilot batch, DFM, supplier coordination, process definition, and factory-floor issue resolution.</p>
-          <p style="margin-top:16px;font-size:14px;color:var(--muted);">For teams launching their first or second hardware product and going through production for the first time.</p>
+          <p style="margin-top:16px;font-size:14px;color:#555555;">For teams launching their first or second hardware product and going through production for the first time.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- WHY -->
-  <section class="why">
+  <section class="why reveal">
     <div class="container">
       <div class="why-inner">
         <div class="why-header">
-          <span class="label">Why Taival Tech</span>
-          <h2>What makes this different.</h2>
+          <span class="label reveal-child" style="transition-delay: 0s">Why Taival Tech</span>
+          <h2 class="reveal-child" style="transition-delay: 0.1s">What makes this different.</h2>
         </div>
-        <div class="why-block">
+        <div class="why-block reveal-child" style="transition-delay: 0.2s">
           <strong>You talk to the engineer doing the work.</strong>
           <p>Not an account manager. Not a project lead who relays feedback. The person on the call is the person with the CAD file open.</p>
         </div>
-        <div class="why-block">
+        <div class="why-block reveal-child" style="transition-delay: 0.3s">
           <strong>Selective by design.</strong>
           <p>A large consultancy is incentivized to extend scope and keep the engagement going. Taival Tech takes a limited number of projects &#8212; because capacity is limited and the work needs to stay honest.</p>
         </div>
-        <div class="why-block">
+        <div class="why-block reveal-child" style="transition-delay: 0.4s">
           <strong>Depth where it&#8217;s hardest to find.</strong>
           <p>Mechanical design, full-cycle product development, DFM, NPI, supplier coordination, and production ramp for low-to-mid volume hardware. Not a generalist. Not a &#8220;hardware consultant.&#8221; Someone who has built these systems.</p>
         </div>
-        <div class="why-block">
+        <div class="why-block reveal-child" style="transition-delay: 0.5s">
           <strong>Startup pace, not firm pace.</strong>
           <p>Direct answers. No status theater. If something is a problem, it gets said plainly &#8212; not buried in a slide deck two weeks later.</p>
         </div>
@@ -181,28 +406,28 @@
   </section>
 
   <!-- BACKGROUND -->
-  <section class="background">
+  <section class="background reveal">
     <div class="container">
       <div class="background-inner">
-        <span class="label">Background</span>
-        <p>This is not a firm. It&#8217;s one engineer with a specific kind of background &#8212; building real products, under real constraints, at companies where a wrong call had consequences.</p>
-        <p>At <b>Revonte</b>, as co-founder: designing the drive unit system for a novel e-bike from scratch &#8212; mechanical architecture, gearing, injection-moulded and die cast components, all the way to a production line running 15&#8239;000 units a year. At <b>Simucube</b>: high-performance sim racing hardware where precision and reliability aren&#8217;t differentiators &#8212; they&#8217;re the baseline. At <b>Verge Motorcycles</b>: electric superbike engineering where margins for error are narrow and deadlines are real.</p>
-        <p>That experience is the product. Not a methodology, not a framework &#8212; direct familiarity with what breaks, what matters at each stage, and where the risks live before they become problems.</p>
+        <span class="label reveal-child" style="transition-delay: 0s">Background</span>
+        <p class="reveal-child" style="transition-delay: 0.1s">This is not a firm. It&#8217;s one engineer with a specific kind of background &#8212; building real products, under real constraints, at companies where a wrong call had consequences.</p>
+        <p class="reveal-child" style="transition-delay: 0.2s">At <b>Revonte</b>, as co-founder: designing the drive unit system for a novel e-bike from scratch &#8212; mechanical architecture, gearing, injection-moulded and die cast components, all the way to a production line running 15&#8239;000 units a year. At <b>Simucube</b>: high-performance sim racing hardware where precision and reliability aren&#8217;t differentiators &#8212; they&#8217;re the baseline. At <b>Verge Motorcycles</b>: electric superbike engineering where margins for error are narrow and deadlines are real.</p>
+        <p class="reveal-child" style="transition-delay: 0.3s">That experience is the product. Not a methodology, not a framework &#8212; direct familiarity with what breaks, what matters at each stage, and where the risks live before they become problems.</p>
       </div>
     </div>
   </section>
 
   <!-- ABOUT -->
-  <section class="about">
+  <section class="about reveal">
     <div class="container">
       <div class="about-inner">
         <div class="about-text">
-        <span class="label">About</span>
-        <p><b>Iiro Peltola</b> is a mechanical engineer at heart who has spent his career in startup environments where the product either ships or it doesn&#8217;t.</p>
-        <p>At <b>Revonte</b>, he co-founded the company and led the drive unit from a blank CAD file to a functioning production line. Gears, shafts, injection-moulded housings, die cast parts &#8212; all of it, end to end. At <b>Simucube</b>, he works as Lead Engineer on new products where tolerances are tight and the customers notice everything. At <b>Verge Motorcycles</b>, he contributes to an electric superbike where the engineering margin for error is essentially zero.</p>
-        <p>He doesn&#8217;t claim to be everything. The background is mechanical design, system engineering, DFM, NPI, supplier work, and full-cycle product development. That&#8217;s what Taival Tech offers.</p>
+          <span class="label reveal-child" style="transition-delay: 0s">About</span>
+          <p class="reveal-child" style="transition-delay: 0.1s"><b>Iiro Peltola</b> is a mechanical engineer at heart who has spent his career in startup environments where the product either ships or it doesn&#8217;t.</p>
+          <p class="reveal-child" style="transition-delay: 0.2s">At <b>Revonte</b>, he co-founded the company and led the drive unit from a blank CAD file to a functioning production line. Gears, shafts, injection-moulded housings, die cast parts &#8212; all of it, end to end. At <b>Simucube</b>, he works as Lead Engineer on new products where tolerances are tight and the customers notice everything. At <b>Verge Motorcycles</b>, he contributes to an electric superbike where the engineering margin for error is essentially zero.</p>
+          <p class="reveal-child" style="transition-delay: 0.3s">He doesn&#8217;t claim to be everything. The background is mechanical design, system engineering, DFM, NPI, supplier work, and full-cycle product development. That&#8217;s what Taival Tech offers.</p>
         </div>
-        <div class="about-photo">
+        <div class="about-photo reveal-child" style="transition-delay: 0.2s">
           <img src="iiro.jpg" alt="Iiro Peltola" />
         </div>
       </div>
@@ -210,15 +435,16 @@
   </section>
 
   <!-- CONTACT -->
-  <section class="cta-section" id="contact">
-    <p>If any of this sounds like your situation, send a short message. No sales call, no intake form. Just a direct conversation about whether this is worth pursuing.</p>
-    <form action="https://formspree.io/f/xreadevk" method="POST" class="contact-form" id="contact-form">
+  <section class="cta-section reveal" id="contact">
+    <h2 class="reveal-child" style="transition-delay: 0s">Let&#8217;s work together.</h2>
+    <p class="cta-intro reveal-child" style="transition-delay: 0.1s">If any of this sounds like your situation, send a short message. No sales call, no intake form. Just a direct conversation about whether this is worth pursuing.</p>
+    <form action="https://formspree.io/f/xreadevk" method="POST" class="contact-form reveal-child" id="contact-form" style="transition-delay: 0.2s">
       <div class="form-row">
         <input type="text" name="name" placeholder="Your name" required />
         <input type="email" name="email" placeholder="Your email" required />
       </div>
       <textarea name="message" placeholder="What are you working on?" rows="4" required></textarea>
-      <button type="submit" class="btn-light">Send message</button>
+      <button type="submit" class="btn-submit">Send message</button>
       <span class="cta-sub" id="form-status">Typically respond within 1 business day.</span>
     </form>
   </section>
@@ -235,8 +461,24 @@
   </footer>
 
   <script>
+    /* Nav scroll */
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 10); });
+
+    /* Reveal on scroll */
+    const revealSections = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const children = entry.target.querySelectorAll('.reveal-child');
+          children.forEach(child => child.classList.add('visible'));
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '-40px' });
+    revealSections.forEach(section => observer.observe(section));
+
+    /* Contact form */
     const form = document.getElementById('contact-form');
     const status = document.getElementById('form-status');
     if (form) {
@@ -251,11 +493,11 @@
             form.innerHTML = '<p style="color:rgba(255,255,255,0.8);font-size:17px;text-align:center;padding:24px 0;">Message sent. Talk soon.</p>';
           } else {
             btn.textContent = 'Send message'; btn.disabled = false;
-            status.textContent = 'Something went wrong &#8212; try emailing directly.';
+            status.textContent = 'Something went wrong \u2014 try emailing directly.';
           }
         } catch {
           btn.textContent = 'Send message'; btn.disabled = false;
-          status.textContent = 'Something went wrong &#8212; try emailing directly.';
+          status.textContent = 'Something went wrong \u2014 try emailing directly.';
         }
       });
     }
