@@ -1,7 +1,7 @@
-(() => {
+﻿(() => {
   const nav = document.getElementById('site-nav');
 
-  // ── Mobile hamburger ──
+  // â”€â”€ Mobile hamburger â”€â”€
   const hamburger = document.getElementById('nav-hamburger');
   const drawer = document.getElementById('nav-drawer');
   if (hamburger && drawer) {
@@ -36,7 +36,7 @@
   handleNavScroll();
   window.addEventListener('scroll', handleNavScroll, { passive: true });
 
-  // ── Nav color adapts to page background ──
+  // â”€â”€ Nav color adapts to page background â”€â”€
   // Light sections get nav-light class; dark sections default (white text)
   if ('IntersectionObserver' in window && nav) {
     const darkSections = document.querySelectorAll('.hero, .section--dark, .execution-model, [data-nav="dark"]');
@@ -139,9 +139,8 @@
   });
 
   const highlightMap = [
-    { match: '/services', id: 'nav-services' },
-    { match: '/portfolio', id: 'nav-portfolio' },
     { match: '/blog', id: 'nav-blog' },
+    { match: '/services', id: 'nav-services' },
   ];
 
   const activeMatch = highlightMap.find((entry) => pagePath.includes(entry.match));
@@ -176,26 +175,32 @@
 
         submitButton.textContent = 'Send message';
         submitButton.disabled = false;
-        if (status) status.textContent = 'Something went wrong — try emailing directly.';
+        if (status) status.textContent = 'Something went wrong â€” try emailing directly.';
       } catch (_) {
         submitButton.textContent = 'Send message';
         submitButton.disabled = false;
-        if (status) status.textContent = 'Something went wrong — try emailing directly.';
+        if (status) status.textContent = 'Something went wrong â€” try emailing directly.';
       }
     });
   }
 
   const heroVideo = document.querySelector('.hero-video');
+  const heroMedia = document.querySelector('.hero-media');
   if (heroVideo) {
     heroVideo.addEventListener('error', () => {
       heroVideo.style.display = 'none';
+      heroMedia?.classList.add('no-video');
     });
 
     const playPromise = heroVideo.play?.();
     if (playPromise && typeof playPromise.catch === 'function') {
       playPromise.catch(() => {
-        // Fallback image remains visible underneath.
+        heroMedia?.classList.add('no-video');
       });
     }
   }
 })();
+
+
+
+

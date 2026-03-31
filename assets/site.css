@@ -1,4 +1,4 @@
-*, *::before, *::after {
+﻿*, *::before, *::after {
   box-sizing: border-box;
 }
 
@@ -132,7 +132,7 @@ section[id] {
   white-space: nowrap;
   transition: color 0.25s ease;
 }
-/* Nav light mode — over light sections */
+/* Nav light mode â€” over light sections */
 .site-nav.nav-light .nav-logo,
 .site-nav.nav-light .nav-links a,
 .site-nav.nav-light .nav-cta--text {
@@ -248,27 +248,29 @@ section[id] {
   inset: 0;
 }
 
-.hero-video,
-.hero-bg {
+.hero-video {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.hero-video {
-  opacity: 0.43;
+  opacity: 0.46;
   filter: saturate(0.88) contrast(1.04);
 }
 
-.hero-bg {
-  background: url('../2026-03-03-hero-motor.png') center / cover no-repeat;
-  animation: heroKenBurns 24s ease-in-out infinite alternate;
-  opacity: 0.42;
+.hero-media::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('./ixi-grain-texture.png') center / cover no-repeat;
+  opacity: 0.08;
+  mix-blend-mode: soft-light;
+  z-index: 1;
+  pointer-events: none;
 }
-
 .hero-media::after {
+  z-index: 2;
+  pointer-events: none;
   content: '';
   position: absolute;
   inset: 0;
@@ -289,7 +291,7 @@ section[id] {
 
 .hero-content {
   position: relative;
-  z-index: 1;
+  z-index: 3;
   padding-top: var(--nav-height);
 }
 
@@ -793,7 +795,7 @@ section[id] {
   }
 }
 
-/* ── Hamburger button (hidden on desktop) ── */
+/* â”€â”€ Hamburger button (hidden on desktop) â”€â”€ */
 .nav-hamburger {
   display: none;
   flex-direction: column;
@@ -815,7 +817,7 @@ section[id] {
   transition: transform 0.22s ease, opacity 0.22s ease;
   transform-origin: center;
 }
-/* 2-line hamburger: top ↘ / bottom ↗ */
+/* 2-line hamburger: top â†˜ / bottom â†— */
 .nav-hamburger[aria-expanded="true"] span:nth-child(1) {
   transform: translateY(3.5px) rotate(45deg);
 }
@@ -823,7 +825,7 @@ section[id] {
   transform: translateY(-3.5px) rotate(-45deg);
 }
 
-/* ── Mobile drawer (full-screen IXI-style) ── */
+/* â”€â”€ Mobile drawer (full-screen IXI-style) â”€â”€ */
 .nav-drawer {
   display: none;
   position: fixed;
@@ -904,7 +906,7 @@ section[id] {
     gap: 0;
   }
 
-  /* hamburger left, logo center, cta right — IXI pattern */
+  /* hamburger left, logo center, cta right â€” IXI pattern */
   .nav-inner {
     display: grid;
     grid-template-columns: 44px 1fr 44px;
@@ -944,6 +946,7 @@ section[id] {
   }
 
   .hero-content {
+  z-index: 3;
     padding-top: calc(var(--nav-height) + 54px);
   }
 
@@ -961,7 +964,7 @@ section[id] {
   }
 }
 
-/* ── Video break sections (IXI-style cinematic clips between sections) ── */
+/* â”€â”€ Video break sections (IXI-style cinematic clips between sections) â”€â”€ */
 .video-break {
   position: relative;
   width: 100%;
@@ -981,7 +984,7 @@ section[id] {
   opacity: 0.85;
 }
 
-/* ── Services index list (homepage) ── */
+/* â”€â”€ Services index list (homepage) â”€â”€ */
 .services-index-list {
   list-style: none;
   margin: 28px 0 0;
@@ -1018,3 +1021,9 @@ section[id] {
   text-transform: uppercase;
   color: var(--text-dark-muted);
 }
+
+
+
+
+
+
